@@ -21,3 +21,39 @@ cat("La cantidad de espacios en blanco en el texto es:", espacios_en_blanco)
 
 ```
 
+```{r}
+ocurrencias <- table(strsplit(texto, "")[[1]])
+
+# Encontrar los caracteres que se repiten exactamente 138 veces
+char <- names(ocurrencias[ocurrencias == 138])
+
+# Imprimir los caracteres encontrados
+print(char)
+
+```
+
+```{r}
+# Función para contar consonantes
+contar_consonantes <- function(text) {
+  consonantes <- grep("[^aeiou]", tolower(text), value = TRUE)
+  count <- nchar(consonantes)
+  return(count)
+}
+
+resultado <- contar_consonantes(texto)
+cat("Número de caracteres no vocales:", resultado)
+```
+
+
+```{r}
+texto <- tolower(texto)
+
+palabras <- strsplit(texto, " ")[[1]]
+
+empieza <- "^\\s*[aeiou]"
+palabras_seleccionadas <- grep(empieza, palabras, value = TRUE)
+
+num_palabras <- length(palabras_seleccionadas)
+num_palabras
+```
+
